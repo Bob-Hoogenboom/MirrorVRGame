@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Test/TEST_XRMirror.unity
+    guid: 7eedd2561eb29a6479e5c89d6578dd36
+  - enabled: 1
     path: Assets/Scenes/Default/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
   m_configObjects:
