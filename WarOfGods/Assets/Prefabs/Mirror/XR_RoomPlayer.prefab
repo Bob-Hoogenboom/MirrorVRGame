@@ -473,9 +473,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8879564871864802802}
-  - component: {fileID: 7104749800420897064}
-  - component: {fileID: 2873593647611392369}
-  - component: {fileID: 4153115069734286859}
   m_Layer: 0
   m_Name: XR_RoomPlayer
   m_TagString: Untagged
@@ -500,62 +497,6 @@ Transform:
   - {fileID: 5490386690768729053}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7104749800420897064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923168097503723393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
-  sceneId: 0
-  _assetId: 3747863678
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
---- !u!114 &2873593647611392369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923168097503723393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b58f6852a14a74bb55e4ff72cbee5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Network.Player.NetworkPlayerVR
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  head: {fileID: 2538496350528066302}
-  leftHand: {fileID: 415103996591648277}
-  rightHand: {fileID: 4374074964190715057}
-  headTarget: {fileID: 4388799220120742520}
-  leftTarget: {fileID: 7405767278784961207}
-  rightTarget: {fileID: 5605004287347477225}
---- !u!114 &4153115069734286859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923168097503723393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4329032ff013f2045b3e413d89402c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Network.CustomNetworkRoomPlayer
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  showRoomGUI: 1
-  readyToBegin: 0
-  index: 0
 --- !u!1 &2172407996201274196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,13 +1880,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5490386690768729053}
+  - component: {fileID: 6098398303065599229}
+  - component: {fileID: 5855797794707457305}
+  - component: {fileID: 1403576166312898128}
   m_Layer: 0
   m_Name: XR_GRFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5490386690768729053
 Transform:
   m_ObjectHideFlags: 0
@@ -1964,6 +1908,62 @@ Transform:
   - {fileID: 5605004287347477225}
   m_Father: {fileID: 8879564871864802802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6098398303065599229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666128996984467994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
+  sceneId: 0
+  _assetId: 2151641912
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &5855797794707457305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666128996984467994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4329032ff013f2045b3e413d89402c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Network.CustomNetworkRoomPlayer
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  showRoomGUI: 1
+  readyToBegin: 0
+  index: 0
+--- !u!114 &1403576166312898128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666128996984467994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b58f6852a14a74bb55e4ff72cbee5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Network.Player.NetworkPlayerVR
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  head: {fileID: 2538496350528066302}
+  leftHand: {fileID: 415103996591648277}
+  rightHand: {fileID: 4374074964190715057}
+  headTarget: {fileID: 4388799220120742520}
+  leftTarget: {fileID: 7405767278784961207}
+  rightTarget: {fileID: 5605004287347477225}
 --- !u!1 &8046447570162977219
 GameObject:
   m_ObjectHideFlags: 0

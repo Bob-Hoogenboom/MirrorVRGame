@@ -20,9 +20,10 @@ namespace Network.Player
         private float _timer;
 
 
-        private void Update()
+        private void LateUpdate()
         {
             if (!isLocalPlayer) return;
+            Debug.Log(isLocalPlayer);
 
             _timer += Time.deltaTime;
             if (_timer >= _sendInterval)
