@@ -2,7 +2,6 @@ using Mirror;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.XR.ARSubsystems;
 
 namespace Network.UI
 {

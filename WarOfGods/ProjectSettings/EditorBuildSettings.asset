@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test/TEST_PCMirror.unity
-    guid: 310d6a8d9992ae74ab100b6987798eba
-  - enabled: 1
     path: Assets/Scenes/Test/TEST_XRMirror.unity
     guid: 7eedd2561eb29a6479e5c89d6578dd36
+  - enabled: 1
+    path: Assets/Scenes/Test/TEST_PCMirror.unity
+    guid: 310d6a8d9992ae74ab100b6987798eba
   - enabled: 1
     path: Assets/Scenes/Test/TEST_Lobby.unity
     guid: 498cf30209e0a224a8cea5d3fb31070b

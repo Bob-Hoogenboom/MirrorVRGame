@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Network.UI
 {
-    public class LobbyUI : MonoBehaviour
+    public class LobbyUI : NetworkBehaviour
     {
         private NetworkManager _netManager;
 
