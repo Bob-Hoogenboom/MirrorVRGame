@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using Network.UI;
 
 namespace Network
 {
@@ -7,6 +8,8 @@ namespace Network
     {
         [Header("Refernces")]
         [SerializeField] private GameObject xrRigPrefab;
+        [Space]
+        [SerializeField] private JoinLobbyUI xrUI;
 
         private GameObject _clientPlayer;
 
@@ -21,14 +24,17 @@ namespace Network
                 //you are the client
                 _clientPlayer = Instantiate(xrRigPrefab);
                 //turn on Client UI
+                xrUI = FindFirstObjectByType<JoinLobbyUI>();
 
+                if (xrUI == null) return;
+                xrUI.SetRoomPlayer(this);
             }
             else
             {
                 //you are the host
                 //TODO: spawn god preview
                 _clientPlayer = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //turn on Hosy UI
+                //turn on Host UI
             }
         }
 

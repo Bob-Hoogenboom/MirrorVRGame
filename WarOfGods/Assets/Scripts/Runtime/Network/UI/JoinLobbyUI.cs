@@ -1,64 +1,80 @@
 using Mirror;
-using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Network.UI
 {
-    public class JoinLobbyUI : MonoBehaviour
+    public class JoinLobbyUI : NetworkBehaviour
     {
-        [SerializeField] private NetworkManager _netManager;
-        public TMP_InputField ipInput;
-        public TMP_InputField portInput;
+        [SerializeField] private TMP_Text readyFeedbackText;
 
-        [SerializeField] private GameObject xrRig;
+        private NetworkManager _netManager;
+        private NetworkRoomPlayer _clientRoomPlayer;
 
-        private void OnEnable() => NetworkClient.OnConnectedEvent += OnConnected;
-        private void OnDisable() => NetworkClient.OnConnectedEvent -= OnConnected;
+        private bool _readyToBegin = false;
 
-
-        public void Start()
+        private void Start()
         {
             _netManager = FindAnyObjectByType<NetworkManager>();
-            if (_netManager == null) this.enabled = false;
-        }
-
-        private void OnConnected()
-        {
-            //TODO: ensure that the new rig that is spawned gets all refernces correctly
-            Destroy(xrRig);
-        }
-
-        public void JoinButton()
-        {
-            UpdateNetwork();
-            _netManager.StartClient();
-
-        }
-
-
-        private void UpdateNetwork()
-        {
-            // set the IP
-            _netManager.networkAddress = ipInput.text;
-
-            // set the port if transport supports it
-            if (Transport.active is PortTransport portTransport)
+            if (_netManager == null)
             {
-                if (ushort.TryParse(portInput.text, out ushort port))
-                {
-                    portTransport.Port = port;
-                }
-                else
-                {
-                    Debug.LogWarning("Invalid port entered. Using default.");
-                }
+                Debug.LogWarning("UI is Disabled because of a missing NetworkManager");
+                DisableAllUI();
             }
         }
 
-        public void QuitGame()
+        [Tooltip("Sends the client out of the room but if the host invokes this the room gets terminated")]
+        public void ReturnToMainMenu()
         {
-            Application.Quit();
+            if (NetworkServer.active && NetworkClient.isConnected)
+            {
+                //you are the Host 
+                _netManager.StopHost();
+            }
+            else if(NetworkServer.active && !NetworkClient.isConnected)
+            {
+                //you are the Host (Server only)
+                _netManager.StopServer();
+            }
+            else
+            {
+                //you are just a Client
+                _netManager.StopClient();
+            }
+        }
+
+        public void ToggleReadyPlayer()
+        {
+            //toggle bool
+            _readyToBegin = !_readyToBegin;
+
+            // CmdChangeReadyState is build in NetworkRoomPlayer
+            _clientRoomPlayer.CmdChangeReadyState(_readyToBegin);
+
+            //Upadte Text
+            UpdateReadyPlayerText();
+        }
+        private void UpdateReadyPlayerText()
+        {
+            readyFeedbackText.text = _readyToBegin ? "Not Ready" : "Ready";
+        }
+
+        public void DisableAllUI()
+        {
+            Button[] buttons = GetComponentsInChildren<Button>();
+
+            foreach (Button button in buttons)
+            {
+                button.interactable = false;
+            }
+
+            this.enabled = false;
+        }
+
+        public void SetRoomPlayer(NetworkRoomPlayer roomPlayer)
+        {
+            _clientRoomPlayer = roomPlayer;
         }
     }
 }

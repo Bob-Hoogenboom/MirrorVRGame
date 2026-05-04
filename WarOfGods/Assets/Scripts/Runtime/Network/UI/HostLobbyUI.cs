@@ -1,31 +1,53 @@
 using Mirror;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Network.UI
 {
-    public class HostLobbyUI : MonoBehaviour
+    public class HostLobbyUI : NetworkBehaviour
     {
-        [SerializeField] private NetworkManager netManager;
-
-        public void Start()
+        private NetworkManager _netManager;
+        private void Start()
         {
-            netManager = FindAnyObjectByType<NetworkManager>();
-            if (netManager == null) this.enabled = false;
+            _netManager = FindAnyObjectByType<NetworkManager>();
+            if (_netManager == null)
+            {
+                Debug.LogWarning("UI is Disabled because of a missing NetworkManager");
+                DisableAllUI();
+            }
         }
 
-        public void ServerAndClientButton()
+        [Tooltip("Sends the client out of the room but if the host invokes this the room gets terminated")]
+        public void ReturnToMainMenu()
         {
-            netManager.StartHost();
+            if (NetworkServer.active && NetworkClient.isConnected)
+            {
+                //you are the Host 
+                _netManager.StopHost();
+            }
+            else if (NetworkServer.active && !NetworkClient.isConnected)
+            {
+                //you are the Host (Server only)
+                _netManager.StopServer();
+            }
+            else
+            {
+                //you are just a Client
+                _netManager.StopClient();
+            }
         }
 
-        public void ServerOnlyButton()
+        public void DisableAllUI()
         {
-            netManager.StartServer();
+            Button[] buttons = GetComponentsInChildren<Button>();
+
+            foreach (Button button in buttons)
+            {
+                button.interactable = false;
+            }
+
+            this.enabled = false;
         }
 
-        public void QuitGame()
-        {
-            Application.Quit();
-        }
     }
 }
