@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4329032ff013f2045b3e413d89402c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Network.CustomNetworkRoomPlayer
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0
   showRoomGUI: 1
