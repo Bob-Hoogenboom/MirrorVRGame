@@ -22,6 +22,7 @@ namespace Network
             if (isClientOnly)
             {
                 //you are the client
+
                 _clientPlayer = Instantiate(xrRigPrefab);
                 //turn on Client UI
                 xrUI = FindFirstObjectByType<JoinLobbyUI>();
